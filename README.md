@@ -43,7 +43,8 @@ Each token can then be processed and transformed into numerical vectors, an esse
 
 ## Example 
 **Example 1: Paragraph Tokenization**
-**Input Paragraph:**
+
+*Input Paragraph:*
 ```
 "On a rainy afternoon, Maria decided to bake cookies. She gathered flour, sugar, and chocolate chips from the pantry."
 ```
@@ -68,7 +69,8 @@ Sentence 2: ["She", "gathered", "flour", "sugar", "and", "chocolate", "chips", "
 ## 
 
 **Example 2: Vocabulary Extraction**
-**Input Text:**
+
+*Input Text:*
 ```
 "I like to drink Apple Juice. My friend likes Mango Juice."
 ```
