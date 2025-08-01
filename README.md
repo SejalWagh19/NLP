@@ -7,6 +7,8 @@
     <li><a href="#tokenization">Tokenization</a></li>
     <li><a href="#example">Example</a></li>
     <li><a href="#tokenization-functions-from-nltk">Tokenization Functions from NLTK</a></li>
+    <li><a href="#stemming">Stemming</a></li>
+    <li><a href="#stemming-functions-from-nltk">Stemming Functions from NLTK</a></li>
   </ol>
 </details>
 This repository represents the implementation of NLP concepts using NLTK library.
@@ -105,8 +107,53 @@ nltk.download('punkt')
 | `wordpunct_tokenize(corpus)`      | Splits text into words and also separates all punctuation marks.           |
 | `TreebankWordTokenizer().tokenize(corpus)` | Breaks text into words using rules from the Penn Treebank (eg: "don't" → "do" + "n't"). |
 
+## Stemming
+Stemming is the process of **reducing a word to its word stem** that affixes to suffixes and prefixes or to the roots of words known as a lemma. Stemming is important in natural language understanding (NLU) and natural language processing (NLP).
 
+**Types of Stemmer**
+1) **Porter Stemmer**
+- The Porter Stemmer is one of the oldest and most widely used stemming algorithms in NLP. 
+- It works by applying a series of rule-based steps to remove common word endings such as -ing, -ed, and -ly. 
+- For example, it converts the word `"running" to "run"` and `"caresses" to "caress"`
+- It's simple and efficient, making it useful for basic text analysis in English. 
+- However, a major disadvantage is that it can sometimes be too aggressive, removing parts of words inappropriately. 
+- For instance, "university" might be stemmed to "univers", which is not a real word.
 
+2) **Snowball Stemmer**
+- The Snowball Stemmer is essentially an improved version of the Porter Stemmer, designed to be more consistent and support multiple languages, including English, French, German, and more.
+- It uses a more refined set of rules and provides better accuracy for modern NLP tasks.
+- Like Porter, it turns `"running" into "run"`, but tends to avoid some of the over-stemming problems.
+- The main disadvantage is that while it's better than Porter, it still doesn't always produce real root words, just shorter versions, and is still based on fixed rules rather than word meaning.
 
+3) **Regexp Stemmer**
+- The Regexp Stemmer is a customizable stemmer where you define your own rules using regular expressions (regex).
+- This gives you full control over how stemming is done, which is helpful in specialized tasks or domain-specific text.
+- For example, you can write a rule to remove the ending "ing" from any word, so "jumping" becomes "jump".
+- The advantage is flexibility, but the disadvantage is that it requires manual setup and good knowledge of regex, and can easily miss edge cases or introduce errors if not carefully designed.
 
+## Stemming Functions from NLTK
+`
+import nltk
+`
+
+**Porter Stemmer**
+```
+from nltk.stem import PorterStemmer
+stemming = PorterStemmer()
+stemming.stem(word)
+```
+
+**Snowball Stemmer**
+```
+from nltk.stem import SnowballStemmer
+snowball_stemmer = SnowballStemmer('english')
+snowball_stemmer.stem(word)
+```
+
+**Regexp Stemmer**
+```
+from nltk.stem import RegexpStemmer
+reg_stemmer = RegexpStemmer('ing$|s$|e$|able$', min=4)
+reg_stemmer.stem('eating')
+```
 
