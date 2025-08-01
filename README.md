@@ -6,6 +6,7 @@
     <li><a href="#core-concepts-in-nlp">Core Concepts in NLP</a></li>
     <li><a href="#tokenization">Tokenization</a></li>
     <li><a href="#example">Example</a></li>
+    <li><a href="#tokenization-functions-from-nltk">Tokenization Functions from NLTK</a></li>
   </ol>
 </details>
 This repository represents the implementation of NLP concepts using NLTK library.
@@ -89,4 +90,23 @@ Sentence 2: ["She", "gathered", "flour", "sugar", "and", "chocolate", "chips", "
 `Vocabulary Size: 10`
 
 **Note:** "Juice" appears twice, hence the count of total words are 11 but unique words are 10.
-##
+## Tokenization Functions from NLTK
+Download the pre-trained tokenizer models needed for sentence and word tokenization.
+
+```
+import nltk
+nltk.download('punkt')
+```
+
+| Function                          | Description                                                                 |
+|-----------------------------------|-----------------------------------------------------------------------------|
+| `sent_tokenize(corpus)`           | Breaks a paragraph into individual sentences.                              |
+| `word_tokenize(corpus)`           | Breaks a sentence into words and punctuation.                              |
+| `wordpunct_tokenize(corpus)`      | Splits text into words and also separates all punctuation marks.           |
+| `TreebankWordTokenizer().tokenize(corpus)` | Breaks text into words using rules from the Penn Treebank (eg: "don't" → "do" + "n't"). |
+
+
+
+
+
+
