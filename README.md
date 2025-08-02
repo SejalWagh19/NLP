@@ -9,6 +9,12 @@
     <li><a href="#tokenization-functions-from-nltk">Tokenization Functions from NLTK</a></li>
     <li><a href="#stemming">Stemming</a></li>
     <li><a href="#stemming-functions-from-nltk">Stemming Functions from NLTK</a></li>
+    <li><a href="#lemmatization">Lemmatization</a></li>
+    <li><a href="#lemmatization-functions-from-nltk">Lemmatization Functions from NLTK</a></li>
+    <li><a href="#stopwords">Stopwords</a></li>
+    <li><a href="#stopwords-functions-from-nltk">Stopwords Functions from NLTK</a></li>
+    <li><a href="#parts-of-speech-tag">Parts of Speech Tag</a></li>
+    <li><a href="#pos-tag-nltk">POS Tag NLTK</a></li>
   </ol>
 </details>
 This repository represents the implementation of NLP concepts using NLTK library.
@@ -104,9 +110,9 @@ nltk.download('punkt')
 
 | Function                          | Description                                                                 |
 |-----------------------------------|-----------------------------------------------------------------------------|
-| `sent_tokenize(corpus)`           | Breaks a paragraph into individual sentences.                              |
-| `word_tokenize(corpus)`           | Breaks a sentence into words and punctuation.                              |
-| `wordpunct_tokenize(corpus)`      | Splits text into words and also separates all punctuation marks.           |
+| `sent_tokenize(corpus)`           | Breaks a paragraph into individual sentences.                               |
+| `word_tokenize(corpus)`           | Breaks a sentence into words and punctuation.                               |
+| `wordpunct_tokenize(corpus)`      | Splits text into words and also separates all punctuation marks.            |
 | `TreebankWordTokenizer().tokenize(corpus)` | Breaks text into words using rules from the Penn Treebank (eg: "don't" → "do" + "n't"). |
 
 ## Stemming
@@ -156,6 +162,100 @@ snowball_stemmer.stem(word)
 ```
 from nltk.stem import RegexpStemmer
 reg_stemmer = RegexpStemmer('ing$|s$|e$|able$', min=4)
-reg_stemmer.stem('eating')
+reg_stemmer.stem(word)
 ```
+
+## Lemmatization
+Lemmatization technique is like stemming. The output we will get after lemmatization is called **'lemma'**, which is a **root word** rather than root stem, the output of stemming. After lemmatization, we will be getting a valid word that means the same thing.
+
+**Wordnet Lemmatizer:**
+NLTK provides WordNetLemmatizer class which is a thin wrapper around the wordnet corpus. This class uses morphy() function to the WordNet CorpusReader class to find a lemma.
+
+| POS       | Tag     |
+|---------- |---------|
+| Noun      | `n`     |
+| Verb      | `v`     |
+| Adjective | `a`     |
+| Adverb    | `r`     |
+
+## Lemmatization Functions from NLTK
+`
+import nltk
+`
+
+**WordNetLemmatizer**
+
+```
+from nltk.stem import WordNetLemmatizer
+lemmatizer=WordNetLemmatizer()
+lemmatizer.lemmatize(word,pos='v')
+```
+
+## Stopwords
+- Stopwords refer to high-frequency lexical items i.e., common words (e.g., "the", "is", "in", "and") that often do not contribute significant semantic value to text-based tasks. 
+- Removing stopwords is a common preprocessing step to reduce dimensionality, eliminate noise, and improve computational efficiency, especially in tasks like information retrieval, text classification, and topic modeling. 
+
+## Stopwords Functions from NLTK
+```
+import nltk
+nltk.download('stopwords')
+```
+The nltk library provides a built-in stopword corpus through nltk.corpus.stopwords, which can be accessed and filtered using functions like stopwords.words('english'). 
+```
+from nltk.corpus import stopwords
+stopwords.words('english')
+```
+
+## Parts of Speech Tag
+### POS Tag Reference
+
+| **Tag**| **Description**                                  | **Example(s)**                |
+|--------|--------------------------------------------------|-------------------------------|
+| CC     | Coordinating conjunction                         | and, but, or                  |
+| CD     | Cardinal digit                                   | one, two, 100                 |
+| DT     | Determiner                                       | the, a, an                    |
+| EX     | Existential there                                | there is, there exists        |
+| FW     | Foreign word                                     | voila, bonjour                |
+| IN     | Preposition/Subordinating conjunction            | in, on, because               |
+| JJ     | Adjective                                        | big                           |
+| JJR    | Adjective, comparative                           | bigger                        |
+| JJS    | Adjective, superlative                           | biggest                       |
+| LS     | List marker                                      | 1), a), i)                    |
+| MD     | Modal                                            | could, will, should           |
+| NN     | Noun, singular                                   | desk                          |
+| NNS    | Noun, plural                                     | desks                         |
+| NNP    | Proper noun, singular                            | Harrison                      |
+| NNPS   | Proper noun, plural                              | Americans                     |
+| PDT    | Predeterminer                                    | "all the kids"                |
+| POS    | Possessive ending                                | parent's                      |
+| PRP    | Personal pronoun                                 | I, he, she                    |
+| PRP$   | Possessive pronoun                               | my, his, hers                 |
+| RB     | Adverb                                           | very, silently                |
+| RBR    | Adverb, comparative                              | better                        |
+| RBS    | Adverb, superlative                              | best                          |
+| RP     | Particle                                         | give up                       |
+| TO     | "To"                                             | to go 'to' the store          |
+| UH     | Interjection                                     | ugh, hmm, errrrrrrrm          |
+| VB     | Verb, base form                                  | take                          |
+| VBD    | Verb, past tense                                 | took                          |
+| VBG    | Verb, gerund/present participle                  | taking                        |
+| VBN    | Verb, past participle                            | taken                         |
+| VBP    | Verb, singular present, non-3d                   | take                          |
+| VBZ    | Verb, 3rd person singular present                | takes                         |
+| WDT    | Wh-determiner                                    | which                         |
+| WP     | Wh-pronoun                                       | who, what                     |
+| WP$    | Possessive wh-pronoun                            | whose                         |
+| WRB    | Wh-adverb                                        | where, when                   |
+
+## POS Tag NLTK
+```
+import nltk
+nltk.download('averaged_perceptron_tagger')
+```
+
+If you want to directly pass a sentence and check the POS for each word, then do:
+```
+nltk.pos_tag(sentence.split())
+```
+
 
