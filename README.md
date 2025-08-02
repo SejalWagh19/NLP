@@ -4,8 +4,7 @@
   <ol>
     <li><a href="#nlp">NLP</a></li>
     <li><a href="#core-concepts-in-nlp">Core Concepts in NLP</a></li>
-    <li><a href="#tokenization">Tokenization</a></li>
-    <li><a href="#example">Example</a></li>
+    <li><a href="#tokenization">Tokenization with Example</a></li>
     <li><a href="#tokenization-functions-from-nltk">Tokenization Functions from NLTK</a></li>
     <li><a href="#stemming">Stemming</a></li>
     <li><a href="#stemming-functions-from-nltk">Stemming Functions from NLTK</a></li>
